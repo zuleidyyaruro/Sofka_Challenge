@@ -1,0 +1,16 @@
+extends layout
+block content 
+    h3(class="text-center") Login
+
+    if error
+        div(class="alert alert-danger w-50 m-auto mt-3" role="alert")=error
+
+    form(class="w-50 m-auto mt-5" method="POST" action="/login")
+        div(class="mb-3")
+            label(for="username" class="form-label") Username
+            input(type="text" class="form-control" id="username" name="username")
+        
+        div(class="mb-3")
+            label(for="password" class="form-label") Password
+            input(type="password" class="form-control" id="password" name="password")
+        button(class="btn btn-primary w-100") Submit

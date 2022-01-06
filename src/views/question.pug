@@ -1,0 +1,27 @@
+extends layout 
+block content 
+
+    h1(class="text-center")=descriptionCategory
+    div(class="row")
+        div(class="col-lg-6 text-center")
+            h3 User  
+            h5=username 
+        div(class=" col-lg-6 text-center")
+            h3 Points Earned
+            h5=points_earned
+    h3(class="text-center")=title
+    h4(class="text-center mt-2")=descriptionQuestion
+    
+    
+
+    form(class="text-center" method="GET" action="/"+route+"/"+username)
+        div(class="row text-center")     
+            each answer in answersPromise
+                div(class="col-lg-6 mt-5 ")
+                    if answer.dataValues.isCorrect===1
+                        input(class="btn btn-primary w-50" type="submit" value=answer.dataValues.descriptionAnswer)
+                    else 
+                        a(href="/youlose") 
+                            input(type="button" value=answer.dataValues.descriptionAnswer class="btn  btn-primary w-50")
+
+        a(href="/withdraw" class="btn btn-danger mt-5") Withdraw 
